@@ -1,0 +1,226 @@
+:root {
+    --primary: #007bff;
+    --secondary: white;
+    --hover: #0069d9;
+}
+
+body {
+    font-size: 1.2rem;
+    background: whitesmoke;
+}
+
+.btn {
+    color: var(--secondary);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+input[type=checkbox] {
+    position: relative;
+    cursor: pointer;
+    width: 14px;
+    height: 13px;
+    margin-right: 3px;
+    border-radius: 3px;
+}
+
+input[type=checkbox]:focus {
+    outline: 0;
+}
+
+input[type=checkbox]:focus:before {
+    border: 1px solid #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+input[type=checkbox]:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    top: 0;
+    left: 0;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    background-color: white;
+}
+
+input[type=checkbox]:checked:before {
+    border: 1px solid var(--blue);
+}
+
+input[type=checkbox]:checked:after {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 8px;
+    border: solid var(--blue);
+    border-width: 0 1.5px 1.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 35%;
+}
+
+label {
+    display: block;
+    font-size: 75%;
+    font-weight: 600;
+    margin: 0;
+}
+
+.loginBlk {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+}
+
+.centerWrap {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
+
+.loginForm {
+    padding: 3%;
+    background: white;
+}
+
+.loginForm > div {
+    margin: 3% 0;
+}
+
+.loginFormTitle {
+    text-align: center;
+    font-size: 120%;
+    font-weight: 600;
+}
+
+.rememberArea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+}
+
+.toRegister{
+    font-size: 90%;
+}
+
+.registerBlk {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+}
+
+.registerForm {
+    padding: 3%;
+    background: white;
+}
+
+.registerForm>div{
+    margin: 3% 0;
+}
+
+.registerFormTitle {
+    text-align: center;
+    font-size: 120%;
+    font-weight: 600;
+}
+
+.registerBtnArea{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toLogin{
+    font-size: 85%;
+    margin: 0;
+    text-align: end;
+}
+@media (max-width:350px){
+    .toLogin{
+        font-size: 75%;
+    }
+}
+.sideNav {
+    height: 100vh;
+    max-width: 200px;
+    color: var(--secondary);
+    background: var(--primary);
+}
+
+.sideNavTitle {
+    text-align: center;
+}
+
+.sideNav > * {
+    padding: 0 20px;
+}
+
+.sideNavLinks {
+    padding: 0;
+}
+
+.sideNavLinks li {
+    padding: 5px 20px;
+}
+
+.sideNavLinks li:hover {
+    cursor: pointer;
+    background-color: var(--hover);
+}
+
+.sideNavLinks a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.directReferrals {
+    list-style: disc;
+    padding: 0 0 0 40px;
+}
+
+.subReferrals {
+    list-style: circle;
+    padding: 0 0 0 40px;
+}
+
+.referralCode {
+    font-size: 80%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.copy {
+    font-weight: 600;
+}
+
+.referralCode .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.referralCode:hover .tooltiptext {
+    visibility: visible;
+}
