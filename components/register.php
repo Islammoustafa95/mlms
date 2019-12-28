@@ -19,10 +19,10 @@
                 <input class="form-control" type="text" id="upline" name="upline">
             </div>
             <div class="registerBtnArea">
-                <input class="btn btn-primary" type="submit" value="Register">
                 <div class="toLoginArea">
                     <p class="toLogin">Already have an account? <span><a href="index.php">Login</a></span>.</p>
                 </div>
+                <input class="btn btn-primary" type="submit" value="Register">
             </div>
         </form>
     </div>
