@@ -182,17 +182,38 @@ label {
 
 .sideNavLinks a {
     color: var(--secondary);
+    font-size: 90%;
     text-decoration: none;
+}
+.referralBlk{
+    margin: 10px;
+}
+.rootReferrals{
+    padding: 0 0 0 40px;
 }
 
 .directReferrals {
-    list-style: disc;
-    padding: 0 0 0 40px;
+    max-height: 500px;
+    min-width: 300px;
+    overflow-y: scroll;
+    list-style: decimal;
+    padding-left: 40px;
+    background: white;
+}
+.referralItem {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.referralItem>div{
+    color: var(--blue);
 }
 
 .subReferrals {
-    list-style: circle;
-    padding: 0 0 0 40px;
+    display: none;
+    list-style: decimal;
+    padding-left: 40px;
 }
 
 .referralCode {
@@ -223,3 +244,5 @@ label {
 .referralCode:hover .tooltiptext {
     visibility: visible;
 }
+
+
