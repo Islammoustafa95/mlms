@@ -19,8 +19,9 @@ $(document).ready(function () {
                         icon: 'success',
                         title: 'Congratulations!',
                         text: 'You have successfully created an account!',
-                        type: 'success',
-                    }).then(function(){
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(function () {
                         window.location = "index.php";
                     });
                 } else {
