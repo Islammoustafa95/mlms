@@ -72,6 +72,16 @@ label {
     margin: 0;
 }
 
+.good, .good:focus{
+    border: 1px solid var(--green);
+    box-shadow: 0 0 0 0.2rem rgba(0,255,0,.25);
+}
+
+.bad, .bad:focus{
+    border: 1px solid var(--red);
+    box-shadow: 0 0 0 0.2rem rgba(255,0,0,.25);
+}
+
 .loginBlk {
     display: flex;
     width: 100%;

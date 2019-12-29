@@ -2,21 +2,25 @@
     <div class="centerWrap">
         <form class="registerForm" action="dashboard.php" method="post">
             <h1 class="registerFormTitle">MLMS Register</h1>
+            <div class="fullNameArea">
+                <label for="name">Full Name</label>
+                <input class="form-control" type="text" id="name" name="name" autocomplete="username" required>
+            </div>
             <div class="usernameArea">
                 <label for="username">New Username</label>
-                <input class="form-control" type="text" id="username" name="username" autocomplete="username">
+                <input class="form-control" type="text" id="username" name="username" minlength="3" maxlength="55" autocomplete="username" required>
             </div>
             <div class="passwordArea">
                 <label for="password">New Password</label>
-                <input class="form-control" type="password" id="password" name="password" autocomplete="new-password">
+                <input class="form-control" type="password" id="password" name="password" minlength="4" maxlength="55" autocomplete="new-password" required>
             </div>
             <div class="rpasswordArea">
-                <label for="rpassword">Repeat Password</label>
-                <input class="form-control" type="password" id="rpassword" name="rpasswor" autocomplete="new-password">
+                <label for="rPassword">Repeat Password</label>
+                <input class="form-control" type="password" id="rPassword" name="rPassword" minlength="4" maxlength="55" autocomplete="new-password" required>
             </div>
             <div class="uplineArea">
-                <label for="upline">Upline Code</label>
-                <input class="form-control" type="text" id="upline" name="upline">
+                <label for="upline">Upline</label>
+                <input class="form-control" type="text" id="upline" name="upline" required>
             </div>
             <div class="registerBtnArea">
                 <div class="toLoginArea">

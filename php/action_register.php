@@ -3,27 +3,41 @@
 	$response['result'] = 0;
 	require_once('db.php');
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$req_params = array('name','email','password','r_password');
+		$req_params = array('name','username','password','rPassword','upline');
 		$is_params_valid = true;
 		foreach($req_params as $value){
 			if(!isset($_POST[$value])) {
 				$is_params_valid = false;
-				$response["msg"] = "invalid params";
+				$response["msg"] = "Data fields are incomplete.";
 			}
 		}
 		if($is_params_valid){
 			$name = mysqli_real_escape_string($db,$_POST['name']);
-			$email = mysqli_real_escape_string($db,$_POST['email']);
+			$username = mysqli_real_escape_string($db,$_POST['username']);
 			$password = mysqli_real_escape_string($db,$_POST['password']);
-			$r_password = mysqli_real_escape_string($db,$_POST['r_password']);
-			if($password == $r_password){
-				$query = "INSERT INTO users (name,email,password) VALUES('$name','$email',PASSWORD('$password'))";
-				$result = mysqli_query($db,$query);
-				if(mysqli_affected_rows($db) == 1){
-					$response['result'] = 1;
-				}else{
-					$response['msg'] = 'E-mail already exists in our server';
-				}
+			$rPassword = mysqli_real_escape_string($db,$_POST['rPassword']);
+			$upline = mysqli_real_escape_string($db,$_POST['upline']);
+			if($password == $rPassword){
+                $query = "SELECT id FROM users WHERE username = '$username'";
+                $result = mysqli_query($db,$query);
+                if(mysqli_num_rows($result)>0){
+				    $response["msg"] = "Username already exists in our server.";
+                }else{
+                    $query = "SELECT id FROM users WHERE username = '$upline'";
+                    $result = mysqli_query($db,$query);
+                    if(mysqli_num_rows($result)==1){
+                        $uplineID = mysqli_fetch_assoc($result)["id"];
+                        $query = "INSERT INTO users (name,username,password,upline) VALUES('$name','$username',PASSWORD('$password'),'$uplineID')";
+                        $result = mysqli_query($db,$query);
+                        if(mysqli_affected_rows($db) == 1){
+                            $response['result'] = 1;
+                        }else{
+                            $response['msg'] = mysqli_error($db);
+                        }
+                    }else{
+				        $response["msg"] = "Upline doesn't exist.";
+                    }
+                }
 			}else{
 				$response["msg"] = "Passwords did not match";
 			}

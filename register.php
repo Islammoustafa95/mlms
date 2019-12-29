@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="lib/jquery/jquery.min.js"></script>
 </head>
 
 <body>
     <?php include_once("components/register.php") ?>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/sweetalert2/sweetalert.min.js"></script>
+    <script src="js/register.js"></script>
 </body>
 
 </html>
