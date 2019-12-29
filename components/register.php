@@ -28,6 +28,9 @@
                 </div>
                 <input class="btn btn-primary" type="submit" value="Register">
             </div>
+            <div class="registerNoticeArea">
+                By clicking register, you agree to our <span><a href="terms_and_conditions.html">Terms &amp; Conditions</a></span> and <span><a href="privacy_policy.html">Privacy Policy</a></span>.
+            </div>
         </form>
     </div>
 </div>
