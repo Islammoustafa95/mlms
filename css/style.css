@@ -72,14 +72,32 @@ label {
     margin: 0;
 }
 
-.good, .good:focus{
+.good {
     border: 1px solid var(--green);
-    box-shadow: 0 0 0 0.2rem rgba(0,255,0,.25);
+    padding-right: calc(1.5em + .75rem);
+    background-image: url(../icon/good.svg);
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .1875rem);
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
 
-.bad, .bad:focus{
+.good:focus {
+    border: 1px solid var(--green);
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, .25);
+}
+
+.bad {
     border: 1px solid var(--red);
-    box-shadow: 0 0 0 0.2rem rgba(255,0,0,.25);
+    padding-right: calc(1.5em + .75rem);
+    background-image: url(../icon/bad.svg);
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .1875rem);
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+
+.bad:focus {
+    border: 1px solid var(--red);
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, .25);
 }
 
 .loginBlk {
@@ -121,7 +139,7 @@ label {
     align-items: center;
 }
 
-.toRegister{
+.toRegister {
     font-size: 90%;
 }
 
@@ -138,7 +156,8 @@ label {
     background: white;
 }
 
-.registerForm>div{
+.registerForm > div {
+    position: relative;
     margin: 3% 0;
 }
 
@@ -147,23 +166,28 @@ label {
     font-size: 120%;
     font-weight: 600;
 }
-.registerNoticeArea{
+
+.registerNoticeArea {
     font-size: 60%;
 }
-.registerBtnArea{
+
+.registerBtnArea {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.toLogin{
+
+.toLogin {
     font-size: 85%;
     margin: 0;
 }
-@media (max-width:350px){
-    .toLogin{
+
+@media (max-width:350px) {
+    .toLogin {
         font-size: 75%;
     }
 }
+
 .sideNav {
     height: 100vh;
     max-width: 200px;
@@ -197,10 +221,12 @@ label {
     font-size: 90%;
     text-decoration: none;
 }
-.referralBlk{
+
+.referralBlk {
     margin: 10px;
 }
-.rootReferrals{
+
+.rootReferrals {
     padding: 0 0 0 40px;
 }
 
@@ -212,13 +238,15 @@ label {
     padding-left: 40px;
     background: white;
 }
+
 .referralItem {
     width: 100%;
     border-bottom: 1px solid black;
     padding: 5px 10px;
     cursor: pointer;
 }
-.referralItem>div{
+
+.referralItem > div {
     color: var(--blue);
 }
 
@@ -256,5 +284,3 @@ label {
 .referralCode:hover .tooltiptext {
     visibility: visible;
 }
-
-
