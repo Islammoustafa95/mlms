@@ -12,7 +12,7 @@
 <body>
     <div class="d-flex">
         <div class="nav">
-            <?php include_once("components/sideNav.php") ?>
+            <?php include_once("components/nav.php") ?>
         </div>
         <div class="main">
             <h1>Dashboard</h1>

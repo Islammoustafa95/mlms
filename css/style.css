@@ -188,19 +188,89 @@ label {
     }
 }
 
-.sideNav {
-    height: 100vh;
-    max-width: 200px;
-    color: var(--secondary);
+.topNav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2020;
+    height: 50px;
     background: var(--primary);
+    padding: 0 15px;
 }
 
-.sideNavTitle {
-    text-align: center;
+.navBarToggler {
+    display: inline-block;
+    padding: 4px 8px;
+    cursor: pointer !important;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 2px;
+    background: transparent;
 }
 
-.sideNav > * {
-    padding: 0 20px;
+.navBarToggler:focus {
+    outline: none;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-5px, 4px);
+    transform: rotate(-45deg) translate(-5px, 4px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -4px);
+    transform: rotate(45deg) translate(-4px, -4px);
+}
+
+.navBrand {
+    margin: 10px;
+    line-height: 10px;
+    padding: 10px 0;
+    font-size: 120%;
+    color: white;
+}
+
+.sideNav {
+    height: calc(100vh - 50px);
+    width: 0;
+    overflow: hidden;
+    background: var(--primary);
+    color: var(--secondary);
+    position: fixed;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.navBarToggler.navOverlay {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    height: calc(100vh - 50px);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .sideNavLinks {
@@ -208,7 +278,7 @@ label {
 }
 
 .sideNavLinks li {
-    padding: 5px 20px;
+    padding: 10px 20px;
 }
 
 .sideNavLinks li:hover {
@@ -220,6 +290,10 @@ label {
     color: var(--secondary);
     font-size: 90%;
     text-decoration: none;
+}
+
+.main {
+    margin-top: 50px;
 }
 
 .referralBlk {
@@ -254,33 +328,4 @@ label {
     display: none;
     list-style: decimal;
     padding-left: 40px;
-}
-
-.referralCode {
-    font-size: 80%;
-    text-align: center;
-    position: relative;
-    cursor: pointer;
-}
-
-.copy {
-    font-weight: 600;
-}
-
-.referralCode .tooltiptext {
-    visibility: hidden;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 5px;
-    position: absolute;
-    bottom: 20px;
-    right: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.referralCode:hover .tooltiptext {
-    visibility: visible;
 }
