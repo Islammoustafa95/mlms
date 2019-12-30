@@ -20,6 +20,11 @@
             <div class="goToRegisterArea">
                 <p class="toRegister">Don't have an account? <a href="register.php">Register</a>.</p>
             </div>
+            <div class="registerNoticeArea">
+                <center>
+                    <span><a href="terms_and_conditions.html">Terms &amp; Conditions</a></span> and <span><a href="privacy_policy.html">Privacy Policy</a></span>.
+                </center>
+            </div>
         </form>
     </div>
 </div>
