@@ -4,15 +4,15 @@
             <h1 class="loginFormTitle">MLMS Login</h1>
             <div class="usernameArea">
                 <label for="username">Username</label>
-                <input class="form-control" type="text" id="username" name="username" autocomplete="username">
+                <input class="form-control" type="text" id="username" name="username" minlength="3" maxlength="55" autocomplete="username" required>
             </div>
             <div class="passwordArea">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" id="password" name="password" autocomplete="current-password">
+                <input class="form-control" type="password" id="password" name="password" minlength="4" maxlength="55" autocomplete="current-password" required>
             </div>
             <div class="rememberArea">
                 <div class="rememberMe">
-                    <input type="checkbox" id="remember" name="remember">
+                    <input type="checkbox" id="remember" name="remember" value="true">
                     <label for="remember">Remember me</label>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Login">

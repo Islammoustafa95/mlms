@@ -1,3 +1,4 @@
+<?php require_once("php/check_session.php") ?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +12,9 @@
 
 <body>
     <?php include_once("components/login.php") ?>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/sweetalert2/sweetalert.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

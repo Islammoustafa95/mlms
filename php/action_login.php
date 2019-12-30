@@ -3,25 +3,47 @@
 	$response['result'] = 0;
 	require_once('db.php');
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		$req_params = array('email','password');
+		$req_params = array('username','password');
 		$is_params_valid = true;
 		foreach($req_params as $value){
 			if(!isset($_POST[$value])) {
 				$is_params_valid = false;
-				$response["msg"] = "invalid params";
+				$response["msg"] = "invalid params". json_encode($_POST);
 			}
 		}
 		if($is_params_valid){
-			$email = mysqli_real_escape_string($db,$_POST['email']);
+			$username = mysqli_real_escape_string($db,$_POST['username']);
 			$password = mysqli_real_escape_string($db,$_POST['password']);
-			$query = "SELECT id FROM users WHERE email = '$email' AND password = PASSWORD('$password')";
+            $remember = "false";
+            if(isset($_POST["remember"])) $remember = $_POST["remember"];
+            
+			$query = "SELECT id FROM users WHERE username = '$username'";
 			$result = mysqli_query($db,$query);
 			if(mysqli_num_rows($result) == 1){
-				$response['result'] = 1;
-				$user = mysqli_fetch_assoc($result);
-				setcookie('user',$user["id"],time() + (86400 * 30),"/");
+                $query = "SELECT id FROM users WHERE username = '$username' AND password = PASSWORD('$password')";
+                $result = mysqli_query($db,$query);
+                if(mysqli_num_rows($result) == 1){
+                    $response['result'] = 200;
+                    $duid = uniqid();
+                    if($remember == "true"){
+                        $id = mysqli_fetch_assoc($result)["id"];
+                        setcookie('duid',$duid,time() + (86400 * 30),"/");
+                        $query = "UPDATE users SET device_id = '$duid' WHERE id = '$id'";
+                        mysqli_query($db,$query);
+                    }else{
+                        session_start();
+                        $_SESSION["duid"] = $duid;
+                        $id = mysqli_fetch_assoc($result)["id"];
+                        $query = "UPDATE users SET device_id = '$duid' WHERE id = '$id'";
+                        mysqli_query($db,$query);
+                    }
+                }else{
+                    $response['result'] = 2;
+                    $response['msg'] = 'Password is Incorrect';
+                }
 			}else{
-				$response['msg'] = 'Invalid Username or Password';
+                $response['result'] = 1;
+				$response['msg'] = "Username doesn't exist in the server.";
 			}
 		}
 	}else{

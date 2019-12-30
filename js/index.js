@@ -1,96 +1,74 @@
-$(document).ready(function(){
-	$('a[href^="#register"]').click(function() {
-		$('#login').fadeOut('fast',function(){
-			$.each($('#register input'),function(index, el) {
-				$(el).val('');
-			});
-			$('#register').fadeIn('fast');
-		});
-	});
-	$('a[href^="#login"]').click(function() {
-		$('#register').fadeOut('fast',function(){
-			$.each($('#login input'),function(index, el) {
-				$(el).val('');
-			});
-			$('#login').fadeIn('fast');
-		});
-	});
-
-	$('#login').submit(function(event) {
-		event.preventDefault();
-		var myFormData = new FormData();
-		$.each($(this).serializeArray(), function(i, field) {
-		    myFormData.append(field.name,field.value);
-		});
-		$.ajax({
-			url: 'php/action_login.php',
-			type: 'POST',
-			processData: false, // important
-			contentType: false, // important
-			dataType: 'json',
-			data: myFormData,
-		})
-		.done(function(response) {
-			if(response.result == 1){
-				window.location.href = "choose.php?loggedIn";
-			}else{
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: response.msg
-				});
-			}
-		})
-		.fail(function() {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Something went wrong!'
-			});
-		});
-	});
-
-	$('#register').submit(function(event) {
-		event.preventDefault();
-		var myFormData = new FormData();
-		$.each($(this).serializeArray(), function(i, field) {
-		    myFormData.append(field.name,field.value);
-		});
-		$.ajax({
-			url: 'php/action_register.php',
-			type: 'POST',
-			processData: false, // important
-			contentType: false, // important
-			dataType: 'json',
-			data: myFormData,
-		})
-		.done(function(response) {
-			if(response.result == 1){
-				Swal.fire({
-					icon: 'success',
-					title: 'Congratulations!',
-					text: 'You have successfully created an account!'
-				});
-				$('#register').fadeOut('fast',function(){
-					$.each($('#login input'),function(index, el) {
-						$(el).val('');
-					});
-					$('#login').fadeIn('fast');
-				});
-			}else{
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: response.msg
-				});
-			}
-		})
-		.fail(function() {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Something went wrong!'
-			});
-		});
-	});
+$(document).ready(function () {
+    $('.loginForm').submit(function (event) {
+        event.preventDefault();
+        var myFormData = new FormData();
+        $.each($(this).serializeArray(), function (i, field) {
+            myFormData.append(field.name, field.value);
+        });
+        $.ajax({
+                url: 'php/action_login.php',
+                type: 'POST',
+                processData: false, // important
+                contentType: false, // important
+                dataType: 'json',
+                data: myFormData,
+            })
+            .done(function (response) {
+                switch (response.result) {
+                    case 200:
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Congratulations!',
+                            text: 'Logged In Successfully!',
+                            showConfirmButton: false,
+                            timer: 2000
+                        }).then(function () {
+                            window.location = "dashboard.php";
+                        });
+                        break;
+                    case 1:
+                        $("#username").removeClass('good');
+                        $("#username").addClass('bad');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.msg
+                        });
+                        break;
+                    case 2:
+                        $("#username").removeClass('bad');
+                        $("#username").addClass('good');
+                        $("#password").removeClass('good');
+                        $("#password").addClass('bad');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.msg
+                        });
+                        break;
+                    default:
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.msg
+                        });
+                        break;
+                }
+            })
+            .fail(function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!'
+                });
+            });
+    });
+    $("#username").keydown(function () {
+        $(this).removeClass('good');
+        $(this).removeClass('bad');
+    });
+    $("#password").keydown(function () {
+        $(this).removeClass('good');
+        $(this).removeClass('bad');
+    });
 });
