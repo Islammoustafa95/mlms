@@ -8,7 +8,7 @@
 		foreach($req_params as $value){
 			if(!isset($_POST[$value])) {
 				$is_params_valid = false;
-				$response["msg"] = "invalid params". json_encode($_POST);
+				$response["msg"] = "invalid params";
 			}
 		}
 		if($is_params_valid){

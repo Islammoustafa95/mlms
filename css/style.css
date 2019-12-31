@@ -1,18 +1,47 @@
 :root {
     --primary: #007bff;
     --secondary: white;
+    --textColor: black;
+    --background: whitesmoke;
     --hover: #0069d9;
 }
 
 body {
     font-size: 1.2rem;
-    background: whitesmoke;
+    background: var(--background);
+    color: var(--textColor);
+}
+
+@media (max-width:768px) {
+    body {
+        font-size: 1rem;
+    }
+}
+
+h1 {
+    font-size: 120%;
+}
+
+h2 {
+    font-size: 110%;
+}
+
+h3 {
+    font-size: 105%;
+}
+
+p {
+    font-size: 100%;
 }
 
 .btn {
     color: var(--secondary);
     background-color: var(--primary);
     border-color: var(--primary);
+}
+
+.btn:focus {
+    color: var(--secondary);
 }
 
 input[type=checkbox] {
@@ -198,6 +227,7 @@ label {
     z-index: 2020;
     height: 50px;
     background: var(--primary);
+    color: var(--secondary);
     padding: 0 15px;
 }
 
@@ -219,7 +249,7 @@ label {
 .bar3 {
     width: 18px;
     height: 2px;
-    background-color: white;
+    background-color: var(--secondary);
     margin: 4px 0;
     transition: 0.4s;
 }
@@ -243,7 +273,6 @@ label {
     line-height: 10px;
     padding: 10px 0;
     font-size: 120%;
-    color: white;
 }
 
 .sideNav {
@@ -270,7 +299,7 @@ label {
     width: 100%;
     z-index: 1;
     height: calc(100vh - 50px);
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
 }
 
 .sideNavLinks {
@@ -278,6 +307,7 @@ label {
 }
 
 .sideNavLinks li {
+    display: flex;
     padding: 10px 20px;
 }
 
@@ -294,38 +324,45 @@ label {
 
 .main {
     margin-top: 50px;
+    width: 100%;
+}
+
+.main > h2 {
+    margin: 10px 0 10px 10px;
 }
 
 .referralBlk {
     margin: 10px;
 }
 
-.rootReferrals {
-    padding: 0 0 0 40px;
-}
-
-.directReferrals {
-    max-height: 500px;
-    min-width: 300px;
-    overflow-y: scroll;
-    list-style: decimal;
-    padding-left: 40px;
-    background: white;
-}
-
-.referralItem {
-    width: 100%;
-    border-bottom: 1px solid black;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.referralItem > div {
-    color: var(--blue);
-}
-
-.subReferrals {
+.referralItemDetails {
     display: none;
-    list-style: decimal;
-    padding-left: 40px;
+}
+
+.referralList {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.referralList li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 8px;
+}
+
+.referralItemName {
+    font-weight: 500;
+}
+
+.referralItemDetails th {
+    font-weight: 500;
+    padding: 5px 10px 5px 20px;
+}
+
+.settingsBlk {
+    padding: 0 5px;
+}
+
+.themeForm > div {
+    margin: 10px 0;
 }

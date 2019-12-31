@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2019 at 03:55 AM
+-- Generation Time: Dec 31, 2019 at 05:57 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -39,30 +39,19 @@ CREATE TABLE `users` (
   `dateRegistered` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `users`
+-- Table structure for table `user_theme`
 --
 
-INSERT INTO `users` (`id`, `upline`, `name`, `username`, `password`, `device_id`, `activated`, `dateRegistered`) VALUES
-(1, NULL, 'Sistema', 'sistema@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(2, 1, 'Giorgi', 'giorgicb@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(3, 1, 'Ana Paula', 'anapaula@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(4, 3, 'Bruna', 'bruna@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(5, 3, 'Isis Bastos', 'isis@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(6, 4, 'maria', 'maria@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(7, 6, 'Jose', 'jose@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(8, 7, 'Paulo', 'paulo@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(9, 1, 'gilmar@gmail.com', 'gilmar@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(10, 1, 'fabricio@gmail.com', 'fabricio@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(11, 1, 'ricardo@gmail.com', 'ricardo@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(12, 1, 'fernanda@gmail.com', 'fernanda@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(13, 1, 'fabio@gmail.com', 'fabio@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(14, 2, 'tom@gmail.com', 'tom@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(15, 2, 'moacir@gmail.com', 'moacir@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(16, 2, 'andreia@gmail.com', 'andreia@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(17, 2, 'julio@gmail.com', 'julio@gmail.com', '202cb962ac59075b964b07152d234b70', '', 0, '2019-12-29 14:45:50'),
-(36, 1, 'Abraham Guerrero', 'abraham28', '*96852F71D6F4BD293CB9FC162ABB2DE7FF644285', '', 0, '2019-12-30 01:59:47'),
-(37, 36, 'Abraham Guerrero', 'abraham288', '*96852F71D6F4BD293CB9FC162ABB2DE7FF644285', '', 0, '2019-12-30 02:05:00');
+CREATE TABLE `user_theme` (
+  `user_id` int(11) NOT NULL,
+  `primaryColor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `secondaryColor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `backgroundColor` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `textColor` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -76,6 +65,13 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `user_theme`
+--
+ALTER TABLE `user_theme`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -83,7 +79,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `user_theme`
+--
+ALTER TABLE `user_theme`
+  ADD CONSTRAINT `user_theme_rel` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
