@@ -23,7 +23,7 @@ $(document).ready(function () {
                             showConfirmButton: false,
                             timer: 2000
                         }).then(function () {
-                            window.location = "dashboard.php";
+                            window.location = "./dashboard";
                         });
                         break;
                     case 1:

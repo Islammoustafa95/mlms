@@ -18,11 +18,11 @@
                 <input class="btn btn-primary" type="submit" value="Login">
             </div>
             <div class="goToRegisterArea">
-                <p class="toRegister">Don't have an account? <a href="register.php">Register</a>.</p>
+                <p class="toRegister">Don't have an account? <a href="./register">Register</a>.</p>
             </div>
             <div class="registerNoticeArea">
                 <center>
-                    <span><a href="terms_and_conditions.html">Terms &amp; Conditions</a></span> and <span><a href="privacy_policy.html">Privacy Policy</a></span>.
+                    <span><a href="terms_and_conditions">Terms &amp; Conditions</a></span> and <span><a href="privacy_policy">Privacy Policy</a></span>.
                 </center>
             </div>
         </form>

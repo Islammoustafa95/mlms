@@ -1,7 +1,7 @@
 <?php
 	$response = array();
 	$response['result'] = 0;
-	require_once('db.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/mlms/php/db.php');
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req_params = array('name','username','password','rPassword','upline');
 		$is_params_valid = true;

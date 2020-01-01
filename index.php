@@ -1,4 +1,9 @@
-<?php require_once("php/check_session.php") ?>
+<?php 
+    require_once('php/check_session.php');
+    if($isSessionActive){
+        header("location: dashboard");
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,10 +16,10 @@
 </head>
 
 <body>
-    <?php include_once("components/login.php") ?>
+    <?php include_once("login.php") ?>
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/sweetalert2/sweetalert.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

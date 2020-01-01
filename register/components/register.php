@@ -24,12 +24,12 @@
             </div>
             <div class="registerBtnArea">
                 <div class="toLoginArea">
-                    <p class="toLogin">Already have an account? <span><a href="index.php">Login</a></span>.</p>
+                    <p class="toLogin">Already have an account? <span><a href="../">Login</a></span>.</p>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Register">
             </div>
             <div class="registerNoticeArea">
-                By clicking register, you agree to our <span><a href="terms_and_conditions.html">Terms &amp; Conditions</a></span> and <span><a href="privacy_policy.html">Privacy Policy</a></span>.
+                By clicking register, you agree to our <span><a href="../terms_and_conditions/">Terms &amp; Conditions</a></span> and <span><a href="../privacy_policy/">Privacy Policy</a></span>.
             </div>
         </form>
     </div>

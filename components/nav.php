@@ -9,15 +9,20 @@
 <div class="sideNav">
     <div class="sideNavBlk">
         <ul class="sideNavLinks">
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="settings.php">Settings</a></li>
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="../dashboard">Dashboard</a></li>
+            <li><a href="../settings">Settings</a></li>
+            <li><a href="../logout.php">Log Out</a></li>
         </ul>
     </div>
 </div>
 <div class="navBarToggler navOverlay"></div>
 <script>
-    var themeData = <?php echo $_COOKIE['themeData']; ?>;
+    var themeData = <?php 
+        if(isset($_COOKIE['themeData'])) {
+            echo $_COOKIE["themeData"];
+        } else{
+            echo "{}";
+        } ?>;
 
     function loadDOMTheme(themeData) {
         let primaryColor = themeData.primaryColor;
@@ -32,7 +37,7 @@
 
     function updateTheme() {
         $.ajax({
-                url: 'php/action_get_user_theme.php',
+                url: '/mlms/php/action_get_user_theme.php',
                 type: 'POST',
                 processData: false, // important
                 contentType: false, // important

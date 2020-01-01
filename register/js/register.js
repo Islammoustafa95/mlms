@@ -22,7 +22,7 @@ $(document).ready(function () {
                         showConfirmButton: false,
                         timer: 2000
                     }).then(function () {
-                        window.location = "index.php";
+                        window.location = "../";
                     });
                 } else {
                     Swal.fire({
@@ -55,7 +55,7 @@ $(document).ready(function () {
             var myFormData = new FormData();
             myFormData.append('username', el.val());
             $.ajax({
-                    url: 'php/check_username_availability.php',
+                    url: '../php/check_username_availability.php',
                     type: 'POST',
                     processData: false, // important
                     contentType: false, // important
@@ -104,7 +104,7 @@ $(document).ready(function () {
             var myFormData = new FormData();
             myFormData.append('username', el.val());
             $.ajax({
-                    url: 'php/check_username_availability.php',
+                    url: '../php/check_username_availability.php',
                     type: 'POST',
                     processData: false, // important
                     contentType: false, // important
