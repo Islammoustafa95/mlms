@@ -37,6 +37,20 @@
                         $query = "UPDATE users SET device_id = '$duid' WHERE id = '$id'";
                         mysqli_query($db,$query);
                     }
+                    $query = "SELECT 
+                            user_theme.primaryColor,
+                            user_theme.secondaryColor,
+                            user_theme.backgroundColor,
+                            user_theme.textColor
+                            FROM users
+                            INNER JOIN user_theme ON users.id = user_theme.user_id
+                            WHERE users.device_id = '$duid'";
+                    $result = mysqli_query($db,$query);
+                    if(mysqli_num_rows($result) == 1){
+                        $themeData = mysqli_fetch_assoc($result);
+                        $response['themeData'] = $themeData;
+                        setcookie('themeData',json_encode($themeData),time() + (86400 * 30),"/");
+                    }
                 }else{
                     $response['result'] = 2;
                     $response['msg'] = 'Password is Incorrect';
