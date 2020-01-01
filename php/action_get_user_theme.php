@@ -21,7 +21,9 @@
 			$result = mysqli_query($db,$query);
 			if(mysqli_num_rows($result) == 1){
                 $response['result'] = 1;
-                $response['themeData'] = mysqli_fetch_assoc($result);
+                $themeData = mysqli_fetch_assoc($result);
+                $response['themeData'] = $themeData;
+                setcookie('themeData',json_encode($themeData),time() + (86400 * 30),"/");
 			}else{
 				$response['msg'] = "Theme doesn't exist.";
 			}
